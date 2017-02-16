@@ -1,0 +1,17 @@
+<table>
+  <tr>
+    <th> Name:</th>
+    <th> Model: </th>
+    <th> Manufacturer:</th>
+  </tr>
+<% @cars.each do |car_hash|%>
+  <tr>
+    <td><%= car_hash["name"] %></td>
+    <td><%= car_hash['model'] %></td>
+    <td><%= car_hash['manufacturer'] %></td>
+  </tr>
+  <% end %>
+
+</table>
+
+
