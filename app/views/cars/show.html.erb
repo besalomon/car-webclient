@@ -11,3 +11,6 @@ Model:
 Manufacturer
   <%= @car['manufacturer'] %>
 </div>
+<%= form_tag "/cars/#{@car['id']}", method: :delete do %>
+  <input type = "submit" value = "delete">
+<% end %>
