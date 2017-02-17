@@ -1,0 +1,16 @@
+<%= form_tag "/cars/#{@car['id']}", method: :patch do %>
+<div>
+Name:
+  <input type = text value = "<%= @car["name"] %>" name = "name">
+</div>
+<div>
+Model:
+   <input type = text value = "<%= @car['model'] %>" name = "model">  
+</div>
+<div>
+Manufacturer
+   <input type = text value = "<%= @car['manufacturer'] %>" name = "manufacturer">
+</div>
+
+  <input type = "submit" value = "Update">
+<% end %>

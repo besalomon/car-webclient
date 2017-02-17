@@ -23,4 +23,13 @@ class CarsController < ApplicationController
     redirect_to "/cars"
   end
 
+  def edit
+    @car = Unirest.get("http://localhost:3000/api/v1/cars/#{params[:id]}.json").body
+  end
+
+  def update
+    @car = Unirest.patch("http://localhost:3000/api/v1/cars/#{params[:id]}.json", :headers => {"Accept"=> "application/json"}, :parameters => {:name => params[:name], :model => params[:model], :manufacturer=> params[:manufacturer]}).body
+     redirect_to "/cars/#{@car['id']}"
+  end
+
 end 
