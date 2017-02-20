@@ -1,16 +1,16 @@
 
 <div>
 Name:
-  <%= @car["name"] %>
+  <%= @car.name %>
 </div>
 <div>
 Model:
-  <%= @car['model'] %>  
+  <%= @car.model %>  
 </div>
 <div>
 Manufacturer
-  <%= @car['manufacturer'] %>
+  <%= @car.manufacturer %>
 </div>
-<%= form_tag "/cars/#{@car['id']}", method: :delete do %>
+<%= form_tag "/cars/#{@car.id}", method: :delete do %>
   <input type = "submit" value = "delete">
 <% end %>

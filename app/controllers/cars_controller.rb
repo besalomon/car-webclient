@@ -1,12 +1,11 @@
 class CarsController < ApplicationController
 
   def show
-    @car = Unirest.get("http://localhost:3000/api/v1/cars/#{params[:id]}.json").body
-    render :show
+    @car = Car.find(params[:id])
   end
 
    def index
-    @cars = Unirest.get("http://localhost:3000/api/v1/cars.json").body
+    @cars = Car.all
   end
 
   def new
@@ -14,12 +13,12 @@ class CarsController < ApplicationController
   end
 
   def create
-     @car = Unirest.post("http://localhost:3000/api/v1/cars.json", :headers => {"Accept"=> "application/json"}, :parameters => {:name => params[:name], :model => params[:model], :manufacturer=> params[:manufacturer]}).body
-     redirect_to "/cars/#{@car['id']}"
+    @car = Car.create(params[:name], params[:model], params[:manufacturer])
+    redirect_to "/cars/#{@car['id']}"
   end
 
   def destroy
-    @car = Unirest.delete("http://localhost:3000/api/v1/cars/#{params[:id]}.json").body
+    Car.delete(params[:id])
     redirect_to "/cars"
   end
 
@@ -28,8 +27,8 @@ class CarsController < ApplicationController
   end
 
   def update
-    @car = Unirest.patch("http://localhost:3000/api/v1/cars/#{params[:id]}.json", :headers => {"Accept"=> "application/json"}, :parameters => {:name => params[:name], :model => params[:model], :manufacturer=> params[:manufacturer]}).body
-     redirect_to "/cars/#{@car['id']}"
+    Car.update(params[:id], params[:name], params[:model], params[:manufacturer])
+     redirect_to "/cars/#{params[:id]}"
   end
 
 end 
